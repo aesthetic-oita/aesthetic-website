@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AESTHETIC | Funai-town, Oita City</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0D0D0D',
+                            gray: '#666666',
+                            light: '#F4F4F2',
+                            paper: '#EFEFEA',
+                            border: '#1A1A1A'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['Courier New', 'Courier', 'SFMono-Regular', 'Consolas', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* フォント定義 */
+        /* Helveticaテキスト全箇所を -75詰め (-0.075em) に一括適用 */
+        .font-helvetica-bold {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.075em;
+        }
+        .font-optima-regular {
+            font-family: 'Optima', 'URW Classico', 'Segoe UI', Candara, sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+        }
+
+        /* 背景：80年代アートブック・和紙・高級紙のマット感 */
+        body {
+            font-family: 'Optima', 'URW Classico', 'Helvetica Neue', sans-serif;
+            background-color: #F4F4F2;
+            color: #0D0D0D;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+
+        /* Swiper カスタム（角丸なし・ミニマル仕様） */
+        .swiper-button-next, .swiper-button-prev {
+            color: #0D0D0D !important;
+            background: rgba(244, 244, 242, 0.95);
+            width: 48px !important;
+            height: 48px !important;
+            border: 1px solid #0D0D0D;
+            border-radius: 0px !important;
+        }
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 12px !important;
+            font-weight: bold;
+        }
+        .swiper-pagination-bullet {
+            background: #888888 !important;
+            border-radius: 0 !important;
+            width: 12px !important;
+            height: 2px !important;
+        }
+        .swiper-pagination-bullet-active {
+            background: #0D0D0D !important;
+            width: 24px !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-black selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full bg-[#F4F4F2]/90 backdrop-blur-md z-50 border-b border-brand-black/20">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 h-28 md:h-36 flex justify-between items-center">
+            
+            <!-- 左上：ロゴ画像 -->
+            <a href="#" class="flex items-center">
+                <img src="logo.png" alt="AESTHETIC Logo" class="h-16 md:h-24 w-auto object-contain">
+            </a>
+
+            <nav class="flex items-center space-x-8 text-xs uppercase font-optima-regular text-stone-600">
+                <a href="#about" class="hidden md:block hover:text-black transition-colors">About</a>
+                <a href="#menu" class="hidden md:block hover:text-black transition-colors">Menu</a>
+                <a href="#info" class="hidden md:block hover:text-black transition-colors">Information</a>
+                <a href="#contact" class="hidden md:block hover:text-black transition-colors">Contact</a>
+                
+                <!-- アイコンリンク (ヘッダー) -->
+                <div class="flex items-center space-x-5 pl-4 border-l border-stone-400">
+                    <!-- Google Maps Icon -->
+                    <a href="https://maps.app.goo.gl/pmBoJZBhxnLEhWqt7" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" class="hover:opacity-60 transition-opacity text-black">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </a>
+                    <!-- Instagram Icon -->
+                    <a href="https://www.instagram.com/aesthetic.sunsunstreet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:opacity-60 transition-opacity text-black">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN VISUAL -->
+    <section class="min-h-screen flex flex-col justify-between pt-40 md:pt-52 pb-20 px-6 md:px-8 max-w-7xl mx-auto border-x border-brand-black/15">
+        <div>
+            <!-- 左上肩書き -->
+            <p class="font-optima-regular text-[11px] md:text-xs uppercase text-stone-500 mb-6 tracking-widest">
+                [ BRUNCH, COFFEE, MATCHA, COCKTAILS, SLOW SPACE ]
+            </p>
+            
+            <!-- メインコピー：-75詰め自動適用 -->
+            <h1 class="font-helvetica-bold text-4xl sm:text-6xl md:text-7xl uppercase leading-tight text-brand-black">
+                FOR RETURNING<br>
+                TO ONESELF
+            </h1>
+        </div>
+        
+        <!-- Main Visual Image (hero.jpg) & Subtle Semi-Transparent Replica Label -->
+        <div class="my-12 md:my-16 w-full h-[480px] md:h-[620px] bg-stone-200 overflow-hidden relative border border-brand-black p-2 md:p-3">
+            <div class="w-full h-full overflow-hidden relative">
+                <img src="hero.jpg" 
+                     alt="AESTHETIC Interior" 
+                     class="w-full h-full object-cover object-[15%_center] md:object-center hover:scale-105 transition-transform duration-1000">
+                
+                <!-- MINIMAL SUBTLE SEMI-TRANSPARENT LABEL (枠線・点線なし/控えめな構成) -->
+                <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-[#F4F4F2]/75 backdrop-blur-md px-3.5 py-2.5 z-10 select-none text-brand-black">
+                    <div class="font-mono text-[9px] md:text-[10px] leading-tight space-y-1">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-helvetica-bold text-[10px] md:text-[11px]">N° 01</span>
+                            <span class="text-stone-400">/</span>
+                            <span class="text-stone-700 font-sans uppercase tracking-tight text-[9px]">ARCHITECTURE</span>
+                        </div>
+                        <div class="text-[8px] md:text-[9px] text-stone-500 font-mono tracking-tighter pt-0.5 border-t border-black/10 flex justify-between gap-3">
+                            <span>FUNAI, OITA</span>
+                            <span>[ 33°14'N ]</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 text-xs font-optima-regular uppercase text-stone-500 pt-6 border-t border-brand-black/15">
+            <div>33°14'17.2"N 131°36'45.4"E &nbsp;|&nbsp; FUNAI-TOWN, OITA CITY</div>
+            <div>Scroll Down ↓</div>
+        </div>
+    </section>
+
+    <!-- ABOUT / CONCEPT SECTION -->
+    <section id="about" class="py-28 md:py-36 px-6 md:px-8 border-t border-b border-brand-black/15 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
+            <div class="md:col-span-4">
+                <span class="text-xs font-helvetica-bold text-stone-400 uppercase">[ 01. CONCEPT ]</span>
+            </div>
+            <div class="md:col-span-8 space-y-10 font-optima-regular text-stone-800">
+                <!-- 英文コンセプト -->
+                <div class="space-y-6">
+                    <p class="text-lg md:text-2xl leading-relaxed text-brand-black">
+                        “Being in a faraway place, no one knows me, so it's a great calm down. The time I spent in a cafe on the outskirts of town, without any prestige or special expectations, not caring about what others think, was the most aesthetic and meaningful time for me.”
+                    </p>
+                    <p class="text-xs md:text-sm text-stone-600 uppercase tracking-wider font-optima-regular">
+                        SIP, BREATHE, AND FIND YOUR CALM.<br>
+                        TAKE A JOURNEY TO THE ESCAPISM.
+                    </p>
+                </div>
+
+                <!-- 日本語コンセプト説明 -->
+                <div class="pt-8 border-t border-stone-300 text-sm md:text-base leading-relaxed text-stone-700 space-y-3">
+                    <p>
+                        まるで海外の小さな街角を訪れたときのように。<br>
+                        特別な肩書も人目も気にせず過ごす時間は、自分自身を取り戻すための豊かなひとときです。
+                    </p>
+                    <p>
+                        お気に入りの一杯とともに、深呼吸を。<br>
+                        お時間を気にせず、心ゆくまでゆっくりとお過ごしください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION (SWIPER SLIDER) -->
+    <section id="menu" class="py-28 md:py-36 px-6 md:px-8 max-w-7xl mx-auto border-x border-brand-black/15">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 pb-8 border-b border-brand-black/15">
+            <div>
+                <span class="text-xs font-helvetica-bold text-stone-400 uppercase">[ 02. MENU ]</span>
+                <h2 class="font-helvetica-bold text-3xl md:text-4xl uppercase mt-1">IN-STORE MENU</h2>
+            </div>
+            <span class="text-xs font-optima-regular uppercase text-stone-400 mt-4 md:mt-0">
+                SWIPE TO TURN PAGES ← →
+            </span>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="relative max-w-2xl mx-auto">
+            <div class="swiper menuSwiper w-full bg-[#F4F4F2] border border-brand-black p-3 md:p-8 relative">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Menu Page 1 -->
+                    <div class="swiper-slide flex justify-center items-center bg-white p-2 md:p-4 border border-stone-200">
+                        <img src="menu-1.jpg" alt="Menu Page 1" class="w-full h-auto max-h-[75vh] object-contain">
+                    </div>
+
+                    <!-- Menu Page 2 -->
+                    <div class="swiper-slide flex justify-center items-center bg-white p-2 md:p-4 border border-stone-200">
+                        <img src="menu-2.jpg" alt="Menu Page 2" class="w-full h-auto max-h-[75vh] object-contain">
+                    </div>
+
+                    <!-- Menu Page 3 -->
+                    <div class="swiper-slide flex justify-center items-center bg-white p-2 md:p-4 border border-stone-200">
+                        <img src="menu-3.jpg" alt="Menu Page 3" class="w-full h-auto max-h-[75vh] object-contain">
+                    </div>
+
+                    <!-- Menu Page 4 -->
+                    <div class="swiper-slide flex justify-center items-center bg-white p-2 md:p-4 border border-stone-200">
+                        <img src="menu-4.jpg" alt="Menu Page 4" class="w-full h-auto max-h-[75vh] object-contain">
+                    </div>
+
+                </div>
+
+                <!-- Swiper UI Elements -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination !-bottom-4"></div>
+            </div>
+        </div>
+
+        <p class="text-center text-xs font-optima-regular text-stone-400 uppercase mt-12">
+            ※ 店頭掲示の最新メニューです。季節や入荷状況により変更となる場合がございます。
+        </p>
+    </section>
+
+    <!-- LOCATION & INFO SECTION -->
+    <section id="info" class="py-28 md:py-36 px-6 md:px-8 border-t border-b border-brand-black/15 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+            <div class="md:col-span-5">
+                <span class="text-xs font-helvetica-bold text-stone-400 uppercase">[ 03. INFORMATION ]</span>
+                <h2 class="font-helvetica-bold text-3xl md:text-4xl uppercase mt-1">LOCATION & HOURS</h2>
+            </div>
+            <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 font-optima-regular text-base">
+                
+                <!-- ADDRESS & MAP ICON -->
+                <div class="space-y-4 border-l-2 border-brand-black pl-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-helvetica-bold text-xs text-stone-400 uppercase">ADDRESS</h3>
+                        <a href="https://maps.app.goo.gl/pmBoJZBhxnLEhWqt7" target="_blank" rel="noopener noreferrer" aria-label="Google Maps" class="hover:opacity-60 transition-opacity text-black">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-stone-800 leading-relaxed">
+                        〒870-0021<br>
+                        大分県大分市府内町１丁目４−１６<br>
+                        河電ビル １F
+                    </p>
+                </div>
+
+                <!-- HOURS & BRUNCH -->
+                <div class="space-y-4 border-l-2 border-brand-black pl-6">
+                    <h3 class="font-helvetica-bold text-xs text-stone-400 uppercase">OPENING HOURS</h3>
+                    <div class="text-stone-800 leading-relaxed text-sm space-y-2">
+                        <p>
+                            <span class="font-helvetica-bold">月曜〜木曜・日曜</span><br>
+                            10:00 – 19:00 <span class="text-xs text-stone-500">(18:00 受付終了)</span>
+                        </p>
+                        <p>
+                            <span class="font-helvetica-bold">金曜・土曜</span><br>
+                            10:00 – 23:00 <span class="text-xs text-stone-500">(22:00 受付終了)</span>
+                        </p>
+                        <div class="pt-2 border-t border-stone-200">
+                            <span class="font-helvetica-bold text-xs text-stone-500 block uppercase">Brunch Time</span>
+                            11:00 – 16:00<br>
+                            <span class="text-xs text-stone-500">（※土曜・日曜は 10:00 – 16:00）</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & POLICY SECTION -->
+    <section id="contact" class="py-20 md:py-24 px-6 md:px-8 max-w-7xl mx-auto border-x border-brand-black/15 bg-transparent">
+        <div class="max-w-3xl mx-auto text-center space-y-6 font-optima-regular">
+            <span class="text-xs font-helvetica-bold text-stone-400 uppercase">[ 04. CONTACT & POLICY ]</span>
+            <div class="inline-block bg-black text-white text-xs font-helvetica-bold px-4 py-1.5 uppercase tracking-widest block mx-auto w-max">
+                RESERVATION : NOT ACCEPTED（予約不可）
+            </div>
+            <p class="text-sm text-stone-700 leading-relaxed pt-2">
+                お忘れ物やその他お問い合わせは、公式InstagramのDMまたはメールにて承っております。
+            </p>
+            <p class="font-helvetica-bold text-base tracking-tight">
+                MAIL : <a href="mailto:aesthetic.oita@gmail.com" class="underline hover:text-stone-500 transition-colors">aesthetic.oita@gmail.com</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM & MAPS BANNER SECTION -->
+    <section id="social" class="py-28 md:py-32 px-6 md:px-8 max-w-7xl mx-auto text-center border-x border-t border-brand-black/15">
+        <span class="text-xs font-helvetica-bold text-stone-400 uppercase">[ 05. SOCIAL & MAP ]</span>
+        <h2 class="font-helvetica-bold text-3xl md:text-6xl uppercase mt-2 mb-12">CONNECT WITH US.</h2>
+        
+        <div class="flex justify-center items-center space-x-6 md:space-x-8">
+            <!-- Map App Link Icon -->
+            <a href="https://maps.app.goo.gl/pmBoJZBhxnLEhWqt7" target="_blank" rel="noopener noreferrer" aria-label="Google Maps"
+               class="p-5 md:p-6 border border-brand-black bg-white hover:bg-brand-black hover:text-white transition-all duration-300 group">
+                <svg class="w-7 h-7 md:w-8 md:h-8 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </a>
+            <!-- Instagram Link Icon -->
+            <a href="https://www.instagram.com/aesthetic.sunsunstreet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+               class="p-5 md:p-6 border border-brand-black bg-brand-black text-white hover:bg-transparent hover:text-brand-black transition-all duration-300 group">
+                <svg class="w-7 h-7 md:w-8 md:h-8 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-black text-white py-16 px-6 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-optima-regular text-stone-400">
+            <div class="font-helvetica-bold text-xl text-white uppercase">AESTHETIC.</div>
+            <div>© AESTHETIC. ALL RIGHTS RESERVED.</div>
+            <div>HTTP://AESTHETIC-SUNSUNSTREET.COM</div>
+        </div>
+    </footer>
+
+    <!-- Swiper.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".menuSwiper", {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>
